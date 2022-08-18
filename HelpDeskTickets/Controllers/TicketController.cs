@@ -101,6 +101,7 @@ namespace HelpDeskTickets.Controllers
             return favoritesList;
         }
 
+        //Add this to user controller, update in Angular
         [HttpPost("AddNewUser")]
         public User AddNewUser(string firstName, string lastName)
         {
