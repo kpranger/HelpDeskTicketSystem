@@ -7,7 +7,7 @@ namespace HelpDeskTickets.Models
     {
         public int? UserId { get; set; }
         public int? TicketId { get; set; }
-        [System.Text.Json.Serialization.JsonIgnore]
+        //[System.Text.Json.Serialization.JsonIgnore]
         public virtual Ticket? Ticket { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual User? User { get; set; }
