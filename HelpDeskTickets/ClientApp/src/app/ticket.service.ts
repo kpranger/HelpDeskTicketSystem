@@ -26,8 +26,8 @@ export class TicketService {
     return this.http.get(`${this.baseUrl}${this.controllerEndpoint}/GetByCategory/${category}`);
   }
 
-  updateTicket(id:number, status:string, favoritedUserId: number, resolvedUserId: number, resolutionDetails: string, resolutionDate: Date):any{
-    return this.http.patch(`${this.baseUrl}${this.controllerEndpoint}/UpdateTicket/${id}?status=${status}&favoritedUserId=${favoritedUserId}&resolvedUserId=${resolvedUserId}&resolutionDetails=${resolutionDetails}&resolutionDate=${resolutionDate}`, {});
+  updateTicket(id:number, resolvedUserId: number, resolutionDetails: string, resolutionDate: Date):any{
+    return this.http.patch(`${this.baseUrl}${this.controllerEndpoint}/UpdateTicket/${id}&resolvedUserId=${resolvedUserId}&resolutionDetails=${resolutionDetails}&resolutionDate=${resolutionDate}`, {});
   }
 
   // addTicket(title:string, details: string, status: string, submittedUserId: number, submittedDate: Date, favoritedUserId: number, resolvedUserId: number, resolutionDetails:string, resolvedDate:Date):any{
@@ -44,14 +44,6 @@ export class TicketService {
 
   deleteTicket(id:number):any{
     return this.http.delete(`${this.baseUrl}${this.controllerEndpoint}/DeleteTicket/${id}`);
-  }
-
-  addToFavorites(id:number, firstName: string, lastName:string):any{
-    return this.http.patch(`${this.baseUrl}${this.controllerEndpoint}/AddToFavorites/${id}?firstName=${firstName}&lastName=${lastName}`, {});
-  }
-
-  getFavorites(userId:number):any{
-    return this.http.get(`${this.baseUrl}${this.controllerEndpoint}/GetAllFavorites/${userId}`);
   }
 
   getAllUsers():any{

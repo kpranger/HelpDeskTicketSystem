@@ -1,0 +1,36 @@
+<!-- potentially make this form collapse  -->
+<div class="newTicket">
+    <form #newTicket="ngForm" (ngSubmit)="NewTicket(newTicket)" class="row">
+      <input type="text" name="title" placeholder="Title" ngModel />
+      <input type="text" name="details" placeholder="Request Details" ngModel />
+      <!-- user will not enter status -->
+      <input type="number" name="submittedUserId" placeholder="Your ID" ngModel />
+      <!-- user will not enter submitted date-->
+      <!-- no favorited ID -->
+      <!-- no resolved user Id-->
+      <!-- no resolved details -->
+      <!-- no resolved date -->
+      <label for="technology">Technology</label>
+      <input
+        type="radio"
+        id="technology"
+        name="helpCategory"
+        value="Technology"
+        ngModel
+      />
+      <br>
+      <label for="hr">HR</label>
+      <input type="radio" id="hr" name="helpCategory" value="HR" ngModel />
+      <br>
+      <input
+        type="radio"
+        id="customerService"
+        name="helpCategory"
+        value="Customer Service"
+        ngModel
+      /><br>
+      <label for="customerService">Customer Service Escalation</label>
+  
+      <button>Submit</button>
+    </form>
+  </div>

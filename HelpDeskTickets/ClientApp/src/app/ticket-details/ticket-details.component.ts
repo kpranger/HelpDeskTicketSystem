@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Favorite } from '../favorite';
+import { FavoritesService } from '../favorites.service';
 import { Ticket } from '../ticket';
 import { TicketService } from '../ticket.service';
 
@@ -12,8 +14,11 @@ import { TicketService } from '../ticket.service';
 export class TicketDetailsComponent implements OnInit {
 
   ticket: Ticket = {} as Ticket; 
+  favorites:Favorite[] = [];
+  showFavorites:boolean = false;
+  showResolve:boolean = false;
 
-  constructor(private route:ActivatedRoute, private ticketService:TicketService) { }
+  constructor(private route:ActivatedRoute, private ticketService:TicketService, private favoritesService:FavoritesService) { }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
@@ -23,13 +28,18 @@ export class TicketDetailsComponent implements OnInit {
       this.ticket = response;
       console.log(response);
     });
-
-    // this.ticketService.getAllUsers().subscribe((response:User[]) =>{
-    //   this.allUsers = response;
-    // });
+ this.favoritesService.getFavorites(id).subscribe((response:Favorite[]) =>{
+      this.favorites = response;
+    });
+   
   }
 
-  FavoriteTicket(form:NgForm):void{
-    this.ticketService.addToFavorites(this.ticket.ticketId, form.form.value.FirstName, form.form.value.LastName).subscribe((response:any) => console.log(response));
+  toggleFavorites():void{
+    this.showFavorites = !this.showFavorites;
   }
+
+  toggleResolve():void{
+    this.showResolve = !this.showResolve;
+  }
+
 }

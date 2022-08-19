@@ -1,9 +1,22 @@
 <div>
-    <!--display ticket to be favorited-->
+    <h1>{{ ticket.title }}</h1>
+    <h2>{{ticket.status}}, Submitted {{ticket.submittedDate}}</h2>
+    <h2>{{ticket.category}}</h2>
+    <p>Submitted By User {{ticket.submittedUserId}}</p>
+    <p>{{ticket.details}} </p> <br>
+    <p *ngIf="ticket.favoritedUserId!=null">Favorited By User {{ticket.favoritedUserId}}</p><br>
+    <p *ngIf="ticket.resolvedUserId!=null">Resolved By User {{ticket.resolvedUserId}} on {{ticket.resolvedDate}}</p> <br>
+    <p>{{ticket.resolutionDetails}}</p>
 </div>
 
-<form #favorite="ngForm" (ngSubmit)="FavoriteTicket(favorite)" class="row" >
-    <input type="text" name="FirstName" placeholder="First Name" ngModel />
-    <input type="text" name="LastName" placeholder="Last Name" ngModel />
-    <button>Favorite As User</button>
-</form>
+<div>
+    <button (click)="toggleFavorites()">Favorite This Ticket</button>
+    <app-favorite-ticket *ngIf="showFavorites"></app-favorite-ticket>
+</div>
+<br>
+<div>
+    <button (click)="toggleResolve()">Resolve This Ticket</button>
+    <app-resolved-ticket *ngIf="showResolve"></app-resolved-ticket>
+</div>
+
+

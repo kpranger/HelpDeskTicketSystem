@@ -81,24 +81,7 @@ namespace HelpDeskTickets.Controllers
             return ticket;
         }
 
-        [HttpPatch("AddToFavorites/{id}")]
-        public Favorite addToFavorites(int id, string firstName, string lastName)
-        {
-            User user = context.Users.FirstOrDefault(u => u.FirstName == firstName && u.LastName == lastName);
-            Ticket favTicket = context.Tickets.FirstOrDefault(t => t.TicketId == id);
-            Favorite favorite = new Favorite();
-            favorite.TicketId = favTicket.TicketId;
-            favorite.UserId = user.UserId;
-            context.Favorites.Add(favorite);
-            context.SaveChanges();
-            return favorite;
-        }
 
-        [HttpGet("GetAllFavorites/{userId}")]
-        public List<Favorite> getAllFavorites(int userId)
-        {
-            List<Favorite> favoritesList = context.Favorites.Where(u => u.UserId == userId).Include(f => f.Ticket).ToList();
-            return favoritesList;
         }
 
         //Add this to user controller, update in Angular
