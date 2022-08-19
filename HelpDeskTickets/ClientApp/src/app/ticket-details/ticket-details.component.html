@@ -1,1 +1,9 @@
-<p>ticket-details works!</p>
+<div>
+    <!--display ticket to be favorited-->
+</div>
+
+<div #favorite="ngForm" (ngSubmit)="FavoriteTicket(favorite)" class="row" >
+    <input type="text" name="FirstName" placeholder="First Name" ngModel />
+    <input type="text" name="LastName" placeholder="Last Name" ngModel />
+    <button>Favorite As User</button>
+</div>

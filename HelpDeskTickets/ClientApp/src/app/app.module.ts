@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { UserComponent } from './user/user.component';
+import { UpdateTicketComponent } from './update-ticket/update-ticket.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { UserComponent } from './user/user.component';
     TicketListComponent,
     TicketDetailsComponent,
     UserComponent,
+    UpdateTicketComponent,
     
   ],
   imports: [
@@ -28,7 +30,8 @@ import { UserComponent } from './user/user.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       {path: 'TicketList', component: TicketListComponent},
-      {path: 'TicketDetails/:id', component: TicketDetailsComponent}
+      {path: 'TicketDetails/:id', component: TicketDetailsComponent},
+      {path: 'UpdateTicket/:id', component:UpdateTicketComponent}
       
     ])
   ],

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Ticket } from '../ticket';
 import { TicketService } from '../ticket.service';
@@ -10,7 +11,7 @@ import { TicketService } from '../ticket.service';
 })
 export class TicketDetailsComponent implements OnInit {
 
-  ticket: Ticket = {} as Ticket;  
+  ticket: Ticket = {} as Ticket; 
 
   constructor(private route:ActivatedRoute, private ticketService:TicketService) { }
 
@@ -22,6 +23,13 @@ export class TicketDetailsComponent implements OnInit {
       this.ticket = response;
       console.log(response);
     });
+
+    // this.ticketService.getAllUsers().subscribe((response:User[]) =>{
+    //   this.allUsers = response;
+    // });
   }
 
+  FavoriteTicket(form:NgForm):void{
+    this.ticketService.addToFavorites(this.ticket.ticketId, form.form.value.firstName, form.form.value.lastName);
+  }
 }

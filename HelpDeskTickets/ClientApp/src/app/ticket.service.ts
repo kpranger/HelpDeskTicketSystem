@@ -54,4 +54,7 @@ export class TicketService {
     return this.http.get(`${this.baseUrl}${this.controllerEndpoint}/GetAllFavorites/${userId}`);
   }
 
+  getAllUsers():any{
+    return this.http.get(`${this.baseUrl}${this.controllerEndpoint}/GetAllUsers`);
+  }
 }
