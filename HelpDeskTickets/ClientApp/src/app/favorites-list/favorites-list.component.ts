@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Favorite } from '../favorite';
+import { FavoritesService } from '../favorites.service';
+import { Ticket } from '../ticket';
 
 @Component({
   selector: 'app-favorites-list',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritesListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private favoritesService:FavoritesService) { }
 
+  favTickets:Ticket[] = [];
+  firstName:string = '';
+  lastName:string = '';
   ngOnInit(): void {
+
+  }
+  
+  showFavorites(form:NgForm){
+    this.firstName  = form.form.value.FirstName;
+    this.lastName = form.form.value.LastName;
+    this.favoritesService.getFavorites(form.form.value.FirstName, form.form.value.LastName).subscribe((response:Ticket[]) =>{
+    this.favTickets = response;});
   }
 
+  removeFromFavorites(t:Ticket){
+    t.favoritedUserId = null;
+    
+    this.favTickets.splice()
+  }
 }

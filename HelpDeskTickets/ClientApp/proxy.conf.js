@@ -7,6 +7,7 @@ const PROXY_CONFIG = [
   {
     context: [
       "/api/Ticket",
+      "/api/Favorite"
    ],
     target: target,
     secure: false,

@@ -25,10 +25,11 @@ namespace HelpDeskTickets.Controllers
             return favorite;
         }
 
-        [HttpGet("GetAllFavorites/{userId}")]
-        public List<Favorite> getAllFavorites(int userId)
+        [HttpGet("GetAllFavorites")]
+        public List<Ticket> getAllFavorites(string firstName, string lastName)
         {
-            List<Favorite> favoritesList = context.Favorites.Where(u => u.UserId == userId).Include(f => f.Ticket).ToList();
+            int UserID = context.Users.FirstOrDefault(u => u.FirstName == firstName && u.LastName == lastName).UserId;
+            List<Ticket> favoritesList = context.Favorites.Where(u => u.UserId == UserID).Include(f => f.Ticket).Select(f => f.Ticket).ToList();
             return favoritesList;
         }
     }

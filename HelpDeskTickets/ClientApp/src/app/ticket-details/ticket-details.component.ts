@@ -28,9 +28,6 @@ export class TicketDetailsComponent implements OnInit {
       this.ticket = response;
       console.log(response);
     });
- this.favoritesService.getFavorites(id).subscribe((response:Favorite[]) =>{
-      this.favorites = response;
-    });
    
   }
 

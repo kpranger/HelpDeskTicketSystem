@@ -82,7 +82,6 @@ namespace HelpDeskTickets.Controllers
         }
 
 
-        }
 
         //Add this to user controller, update in Angular
         [HttpPost("AddNewUser")]

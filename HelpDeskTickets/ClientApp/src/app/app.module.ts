@@ -36,7 +36,8 @@ import { FavoritesListComponent } from './favorites-list/favorites-list.componen
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       {path: 'TicketList', component: TicketListComponent},
-      {path: 'TicketDetails/:id', component: TicketDetailsComponent}
+      {path: 'TicketDetails/:id', component: TicketDetailsComponent},
+      {path: 'Favorites', component: FavoritesListComponent}
       
     ])
   ],

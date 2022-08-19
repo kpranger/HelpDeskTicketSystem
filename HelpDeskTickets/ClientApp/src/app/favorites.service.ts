@@ -11,7 +11,7 @@ export class FavoritesService {
   
   addToFavorites(id:number, firstName: string, lastName:string):any{    
     return this.http.patch(`${this.baseUrl}${this.controllerEndpoint}/AddToFavorites/${id}?firstName=${firstName}&lastName=${lastName}`, {});  }
-    
-  getFavorites(userId:number):any{   
-     return this.http.get(`${this.baseUrl}${this.controllerEndpoint}/GetAllFavorites/${userId}`);  }
+
+  getFavorites(firstName:string, lastName:string):any{   
+     return this.http.get(`${this.baseUrl}${this.controllerEndpoint}/GetAllFavorites/?firstName=${firstName}&lastName=${lastName}`);  }
 }
