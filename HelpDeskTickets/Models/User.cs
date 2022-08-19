@@ -7,6 +7,7 @@ namespace HelpDeskTickets.Models
     {
         public User()
         {
+            Favorites = new HashSet<Favorite>();
             TicketFavoritedUsers = new HashSet<Ticket>();
             TicketResolvedUsers = new HashSet<Ticket>();
             TicketSubmittedUsers = new HashSet<Ticket>();
@@ -15,6 +16,9 @@ namespace HelpDeskTickets.Models
         public int UserId { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual ICollection<Favorite> Favorites { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<Ticket> TicketFavoritedUsers { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]

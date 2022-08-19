@@ -5,6 +5,11 @@ namespace HelpDeskTickets.Models
 {
     public partial class Ticket
     {
+        public Ticket()
+        {
+            Favorites = new HashSet<Favorite>();
+        }
+
         public int TicketId { get; set; }
         public string? Title { get; set; }
         public string? Details { get; set; }
@@ -16,11 +21,15 @@ namespace HelpDeskTickets.Models
         public string? ResolutionDetails { get; set; }
         public DateTime? ResolvedDate { get; set; }
         public string? Category { get; set; }
+
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual User? FavoritedUser { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual User? ResolvedUser { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual User? SubmittedUser { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual ICollection<Favorite> Favorites { get; set; }
+
     }
 }

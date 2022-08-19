@@ -112,5 +112,11 @@ namespace HelpDeskTickets.Controllers
             context.SaveChanges();
             return newUser;
         }
+
+        [HttpGet("GetAllUsers")]
+        public List<User> GetAllUsers()
+        {
+            return context.Users.ToList();
+        }
     }
 }

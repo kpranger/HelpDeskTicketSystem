@@ -30,6 +30,6 @@ export class TicketDetailsComponent implements OnInit {
   }
 
   FavoriteTicket(form:NgForm):void{
-    this.ticketService.addToFavorites(this.ticket.ticketId, form.form.value.firstName, form.form.value.lastName);
+    this.ticketService.addToFavorites(this.ticket.ticketId, form.form.value.FirstName, form.form.value.LastName).subscribe((response:any) => console.log(response));
   }
 }

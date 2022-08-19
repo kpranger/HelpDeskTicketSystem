@@ -25,8 +25,8 @@ namespace HelpDeskTickets.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=.\\sqlexpress;Initial Catalog=HelpDeskDB; Integrated Security=SSPI;");
-
+                // optionsBuilder.UseSqlServer("Data Source=.\\sqlexpress;Initial Catalog=HelpDeskDB; Integrated Security=SSPI;");
+                optionsBuilder.UseSqlServer("Data Source=dshjkdslfhkjdfshalkfdshk.database.windows.net;Initial Catalog=HelpDeskDB; User Id=JAdmin; Password=BajaBlast123;");
             }
         }
 
@@ -34,17 +34,18 @@ namespace HelpDeskTickets.Models
         {
             modelBuilder.Entity<Favorite>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.KeyId)
+                    .HasName("PK__Favorite__21F5BE4785FF173D");
 
                 entity.HasOne(d => d.Ticket)
-                    .WithMany()
+                    .WithMany(p => p.Favorites)
                     .HasForeignKey(d => d.TicketId)
-                    .HasConstraintName("FK__Favorites__Ticke__2B3F6F97");
+                    .HasConstraintName("FK__Favorites__Ticke__6383C8BA");
 
                 entity.HasOne(d => d.User)
-                    .WithMany()
+                    .WithMany(p => p.Favorites)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Favorites__UserI__2A4B4B5E");
+                    .HasConstraintName("FK__Favorites__UserI__628FA481");
             });
 
             modelBuilder.Entity<Ticket>(entity =>
@@ -66,17 +67,17 @@ namespace HelpDeskTickets.Models
                 entity.HasOne(d => d.FavoritedUser)
                     .WithMany(p => p.TicketFavoritedUsers)
                     .HasForeignKey(d => d.FavoritedUserId)
-                    .HasConstraintName("FK__Tickets__Favorit__276EDEB3");
+                    .HasConstraintName("FK__Tickets__Favorit__5FB337D6");
 
                 entity.HasOne(d => d.ResolvedUser)
                     .WithMany(p => p.TicketResolvedUsers)
                     .HasForeignKey(d => d.ResolvedUserId)
-                    .HasConstraintName("FK__Tickets__Resolve__286302EC");
+                    .HasConstraintName("FK__Tickets__Resolve__60A75C0F");
 
                 entity.HasOne(d => d.SubmittedUser)
                     .WithMany(p => p.TicketSubmittedUsers)
                     .HasForeignKey(d => d.SubmittedUserId)
-                    .HasConstraintName("FK__Tickets__Submitt__267ABA7A");
+                    .HasConstraintName("FK__Tickets__Submitt__5EBF139D");
             });
 
             modelBuilder.Entity<User>(entity =>
