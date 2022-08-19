@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Favorite } from '../favorite';
 import { FavoritesService } from '../favorites.service';
@@ -14,7 +14,8 @@ export class FavoriteTicketComponent implements OnInit {
 
   constructor(private ticketService:TicketService, private favoritesService:FavoritesService) { }
 
-  ticket: Ticket = {} as Ticket; 
+  
+  @Input() ticket: Ticket = {} as Ticket; 
   favorites:Favorite[] = [];
 
   ngOnInit(): void {

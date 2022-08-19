@@ -12,6 +12,10 @@ export class FavoritesService {
   addToFavorites(id:number, firstName: string, lastName:string):any{    
     return this.http.patch(`${this.baseUrl}${this.controllerEndpoint}/AddToFavorites/${id}?firstName=${firstName}&lastName=${lastName}`, {});  }
 
+   removeFromFavorites(id:number, firstName: string, lastName:string):any{    
+      return this.http.delete(`${this.baseUrl}${this.controllerEndpoint}/RemoveFromFavorites/${id}?firstName=${firstName}&lastName=${lastName}`, {});  }
+  
+
   getFavorites(firstName:string, lastName:string):any{   
      return this.http.get(`${this.baseUrl}${this.controllerEndpoint}/GetAllFavorites/?firstName=${firstName}&lastName=${lastName}`);  }
 }

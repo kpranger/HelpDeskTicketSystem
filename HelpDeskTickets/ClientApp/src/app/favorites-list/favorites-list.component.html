@@ -1,18 +1,21 @@
-<form #favorite="ngForm" (ngSubmit)="showFavorites(favorite)" class="row" >
-    <input type="text" name="FirstName" placeholder="First Name" ngModel />
-    <input type="text" name="LastName" placeholder="Last Name" ngModel />
-    <button>Get My Favorites</button>
+<form #favorite="ngForm" (ngSubmit)="showFavorites(favorite)" class="row">
+  <input type="text" name="FirstName" placeholder="First Name" ngModel />
+  <input type="text" name="LastName" placeholder="Last Name" ngModel />
+  <button>Get My Favorites</button>
 </form>
 
 <div *ngFor="let t of favTickets">
-
-        <h1>{{ t.title }}</h1>
-        <h2>{{t.status}}, Submitted {{t.submittedDate}}</h2>
-        <h2>{{t.category}}</h2>
-        <p>Submitted By User {{t.submittedUserId}}</p>
-        <p>{{t.details}} </p> <br>
-        <p *ngIf="t.favoritedUserId!=null">You favorited this ticket!</p><br>
-        <p *ngIf="t.resolvedUserId!=null">Resolved By User {{t.resolvedUserId}} on {{t.resolvedDate}}</p> <br>
-        <button (click)="removeFromFavorites(t)" >Remove From Favorites</button>
-
+  <h1>{{ t.title }}</h1>
+  <h2>{{ t.status }}, Submitted {{ t.submittedDate }}</h2>
+  <h2>{{ t.category }}</h2>
+  <p>Submitted By User {{ t.submittedUserId }}</p>
+  <p>{{ t.details }}</p>
+  <br />
+  <p *ngIf="t.favoritedUserId != null">You favorited this ticket!</p>
+  <br />
+  <p *ngIf="t.resolvedUserId != null">
+    Resolved By User {{ t.resolvedUserId }} on {{ t.resolvedDate }}
+  </p>
+  <br />
+  <button (click)="removeFromFavorites(t)">Remove From Favorites</button>
 </div>

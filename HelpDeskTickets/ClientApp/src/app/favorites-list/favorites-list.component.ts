@@ -29,7 +29,11 @@ export class FavoritesListComponent implements OnInit {
 
   removeFromFavorites(t:Ticket){
     t.favoritedUserId = null;
-    
-    this.favTickets.splice()
+    let index:number = this.favTickets.indexOf(t); 
+    this.favTickets.splice(index, 1);
+
+    this.favoritesService.removeFromFavorites(t.ticketId, this.firstName, this.lastName).subscribe((response:number) => {
+      console.log(response);
+    })
   }
 }
