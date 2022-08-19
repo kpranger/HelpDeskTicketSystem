@@ -51,23 +51,23 @@ namespace HelpDeskTickets.Controllers
         }
 
         [HttpPost("AddTicket")]
-        public Ticket addTicket(string title, string details, string status, int submittedUserId, DateTime submittedDate,
-            int? favoritedUserId, int? resolvedUserId, string? resolutionDetails, DateTime? resolvedDate, string category)
+        public Ticket addTicket(string title, string details, string status, int submittedUserId, 
+            string category)
         {
             Ticket newTicket = new Ticket();
             newTicket.Title = title;
             newTicket.Details = details;
             newTicket.Status = status;
             newTicket.SubmittedUserId = submittedUserId;
-            newTicket.SubmittedDate = submittedDate;
-            newTicket.FavoritedUserId = favoritedUserId;
-            newTicket.ResolvedUserId = resolvedUserId;
-            newTicket.ResolutionDetails = resolutionDetails;
-            newTicket.ResolvedDate = resolvedDate;
+            newTicket.SubmittedDate = DateTime.Now;
+            //newTicket.FavoritedUserId = favoritedUserId;
+            //newTicket.ResolvedUserId = resolvedUserId;
+            //newTicket.ResolutionDetails = resolutionDetails;
+            //newTicket.ResolvedDate = null;
             newTicket.Category = category;
             context.Tickets.Add(newTicket);
             context.SaveChanges();
-
+            //had to remove the dateTime in the paramater list due to Typescript issues (8/19) 
             return newTicket;
         }
 

@@ -1,3 +1,38 @@
 <div *ngFor="let t of tickets">
   <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
 </div>
+
+<!-- potentially make this form collapse  -->
+<div class="newTicket">
+  <form #newTicket="ngForm" (ngSubmit)="NewTicket(newTicket)" class="row">
+    <input type="text" name="title" placeholder="Title" ngModel />
+    <input type="text" name="details" placeholder="Request Details" ngModel />
+    <!-- user will not enter status -->
+    <input type="number" name="submittedUserId" placeholder="Your ID" ngModel />
+    <!-- user will not enter submitted date-->
+    <!-- no favorited ID -->
+    <!-- no resolved user Id-->
+    <!-- no resolved details -->
+    <!-- no resolved date -->
+    <input
+      type="radio"
+      id="technology"
+      name="helpCategory"
+      value="Technology"
+      ngModel
+    />
+    <label for="technology">Technology</label><br />
+    <input type="radio" id="hr" name="helpCategory" value="HR" ngModel />
+    <label for="hr">HR</label><br />
+    <input
+      type="radio"
+      id="customerService"
+      name="helpCategory"
+      value="Customer Service"
+      ngModel
+    />
+    <label for="customerService">Customer Service Escalation</label>
+
+    <button>Submit</button>
+  </form>
+</div>

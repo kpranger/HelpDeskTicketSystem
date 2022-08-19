@@ -4,10 +4,10 @@ export interface Ticket {
     details:           string;
     status:            string;
     submittedUserId:   number;
-    submittedDate:     string;
+    submittedDate:     Date;
     favoritedUserId:   null;
     resolvedUserId:    number | null;
     resolutionDetails: null | string;
-    resolvedDate:      null | string;
+    resolvedDate:      null | Date;
     category:          string;
 }
