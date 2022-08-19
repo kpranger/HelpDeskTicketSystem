@@ -22,7 +22,7 @@ export class ResolvedTicketComponent implements OnInit {
 
     const routeParams = this.route.snapshot.paramMap;
     let id:number = Number(routeParams.get("id"));
-    this.ticketService.updateTicket(id, form.form.value.resolvedUserId, form.form.value.resolutionDetails, new Date()).subscribe((response:Ticket) => {
+    this.ticketService.updateTicket(id, form.form.value.resolvedUserId, form.form.value.resolutionDetails).subscribe((response:Ticket) => {
       this.updateTicket=response;
     })
     return this.updateTicket;

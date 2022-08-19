@@ -37,14 +37,14 @@ namespace HelpDeskTickets.Controllers
         }
 
         [HttpPatch("UpdateTicket/{id}")]
-        public Ticket updateTicket(int id, string? status, int? favoritedUserId, int? resolvedUserId, string? resolutionDetails, DateTime? resolvedDate)
+        public Ticket updateTicket(int id, string? status, int? favoritedUserId, int? resolvedUserId, string? resolutionDetails)
         {
             Ticket updatedTicket = context.Tickets.FirstOrDefault(t => t.TicketId == id);
             updatedTicket.Status = status;
             updatedTicket.FavoritedUserId = favoritedUserId;
             updatedTicket.ResolvedUserId = resolvedUserId;
             updatedTicket.ResolutionDetails = resolutionDetails;
-            updatedTicket.ResolvedDate = resolvedDate;
+            updatedTicket.ResolvedDate = DateTime.Now;
             context.SaveChanges();
 
             return updatedTicket;

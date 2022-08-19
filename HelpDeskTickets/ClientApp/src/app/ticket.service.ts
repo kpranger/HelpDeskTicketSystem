@@ -26,8 +26,9 @@ export class TicketService {
     return this.http.get(`${this.baseUrl}${this.controllerEndpoint}/GetByCategory/${category}`);
   }
 
-  updateTicket(id:number, resolvedUserId: number, resolutionDetails: string, resolutionDate: Date):any{
-    return this.http.patch(`${this.baseUrl}${this.controllerEndpoint}/UpdateTicket/${id}&resolvedUserId=${resolvedUserId}&resolutionDetails=${resolutionDetails}&resolutionDate=${resolutionDate}`, {});
+
+  updateTicket(id:number, resolvedUserId: number, resolutionDetails: string):any{
+    return this.http.patch(`${this.baseUrl}${this.controllerEndpoint}/UpdateTicket/${id}?resolvedUserId=${resolvedUserId}&resolutionDetails=${resolutionDetails}`, {});
   }
 
   // addTicket(title:string, details: string, status: string, submittedUserId: number, submittedDate: Date, favoritedUserId: number, resolvedUserId: number, resolutionDetails:string, resolvedDate:Date):any{

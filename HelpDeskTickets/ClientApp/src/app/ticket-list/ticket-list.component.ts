@@ -22,22 +22,9 @@ export class TicketListComponent implements OnInit {
     });
   }
 
-  NewTicket(form:NgForm):Ticket {
-    this.newTicket.title = form.form.value.title;
-    this.newTicket.details = form.form.value.details;
-    this.newTicket.status = "Open";
-    this.newTicket.submittedUserId = form.form.value.submittedUserId;
-    this.newTicket.submittedDate = new Date(); 
-    this.newTicket.favoritedUserId=null;
-    this.newTicket.resolvedUserId=null;
-    this.newTicket.resolutionDetails= null;
-    this.newTicket.resolvedDate = null;
-    this.newTicket.category=form.form.value.helpCategory 
-    this.ticketService.addTicket(this.newTicket).subscribe((response:Ticket) => {
-      console.log(response)
-      this.tickets.push(response) //once new ticket is back from DB (we sent to addTicket - this line will make the new item display )
-    })
-    return this.newTicket;
+  NewTicket(createdTicket:Ticket):void {
+    
+    this.tickets.push(createdTicket)
 
   }
 
