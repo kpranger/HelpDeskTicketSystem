@@ -1,0 +1,10 @@
+.newTicket{
+    text-align: center;
+}
+input{
+    background-color: #413931;
+    color: #cddecd;
+}
+::placeholder{
+    color: #cddecd;
+}

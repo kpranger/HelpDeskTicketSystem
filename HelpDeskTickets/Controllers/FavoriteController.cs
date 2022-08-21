@@ -15,6 +15,12 @@ namespace HelpDeskTickets.Controllers
         public Favorite addToFavorites(int id, string firstName, string lastName)
         {
             User user = context.Users.FirstOrDefault(u => u.FirstName == firstName && u.LastName == lastName);
+            //if (user == null)
+            //{
+            //    newUser.FirstName = firstName;
+            //    newUser.LastName = lastName;
+            //    context.Users.Add(newUser);
+            //}
             Ticket favTicket = context.Tickets.FirstOrDefault(t => t.TicketId == id);
             Favorite favorite = new Favorite();
             favorite.TicketId = favTicket.TicketId;

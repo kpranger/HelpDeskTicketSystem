@@ -1,9 +1,19 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor(@Inject('BASE_URL') private baseUrl: string, private http:HttpClient) { }
+  controllerEndpoint:string = "api/Ticket";
+
+  addNewUser(firstName:string, lastName:string):any{
+    return this.http.post(`${this.baseUrl}${this.controllerEndpoint}/AddNewUser`, {});
+  }
+
+  getAllUsers():any{
+    return this.http.post(`${this.baseUrl}${this.controllerEndpoint}/GetAllUsers`, {});
+  }
 }
