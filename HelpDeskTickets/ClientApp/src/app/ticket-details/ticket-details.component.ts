@@ -17,14 +17,15 @@ export class TicketDetailsComponent implements OnInit {
   favorites:Favorite[] = [];
   showFavorites:boolean = false;
   showResolve:boolean = false;
+  id:number = -1;
 
   constructor(private route:ActivatedRoute, private ticketService:TicketService, private favoritesService:FavoritesService) { }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    let id:number = Number(routeParams.get("id"));
-    console.log(id);
-    this.ticketService.getTicketById(id).subscribe((response:Ticket) => {
+    this.id = Number(routeParams.get("id"));
+    console.log(this.id);
+    this.ticketService.getTicketById(this.id).subscribe((response:Ticket) => {
       this.ticket = response;
       console.log(response);
     });
@@ -39,4 +40,8 @@ export class TicketDetailsComponent implements OnInit {
     this.showResolve = !this.showResolve;
   }
 
+  // removeTicket(id:number):void{
+  //   this.ticketService.deleteTicket(id);
+  //   console.log(id)
+  // }
 }
