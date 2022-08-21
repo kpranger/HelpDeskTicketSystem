@@ -13,6 +13,7 @@ export class TicketListComponent implements OnInit {
   constructor(private ticketService: TicketService) { }
 
   newTicket:Ticket = {} as Ticket;
+  showForm:boolean = false;
 
   tickets:Ticket[] = [];
   ngOnInit(): void {
@@ -26,6 +27,10 @@ export class TicketListComponent implements OnInit {
     
     this.tickets.push(createdTicket)
 
+  }
+
+  ToggleDisplay(){
+    this.showForm= !this.showForm;
   }
 
 }

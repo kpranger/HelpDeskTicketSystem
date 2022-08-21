@@ -1,7 +1,14 @@
-<app-add-ticket (created)="NewTicket($event)"> </app-add-ticket>
-<!-- the $event receives the output from the addTicket-->
+<div class="button">
+  <button *ngIf="!showForm" (click)="ToggleDisplay()">Add Ticket</button>
+</div>
+  <div class="newTicketForm">
+    <app-add-ticket *ngIf="showForm" (created)="NewTicket($event)" > </app-add-ticket>
+  </div>
+  <!-- the $event receives the output from the addTicket-->
+
+
 
 <!--Display list of tickets-->
-<div *ngFor="let t of tickets">
+<div *ngFor="let t of tickets" class="ticketList">
   <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
 </div>
