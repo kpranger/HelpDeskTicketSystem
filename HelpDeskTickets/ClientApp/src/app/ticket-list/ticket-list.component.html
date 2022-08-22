@@ -2,36 +2,69 @@
   <button *ngIf="!showForm" (click)="ToggleDisplay()">Add Ticket</button>
 </div>
 <div class="newTicketForm">
-  <app-add-ticket *ngIf="showForm" (created)="NewTicket($event)" (created)="ToggleDisplay()"> </app-add-ticket>
+  <app-add-ticket
+    *ngIf="showForm"
+    (created)="NewTicket($event)"
+    (created)="ToggleDisplay()"
+  >
+  </app-add-ticket>
 </div>
 
-<br/>
+<br />
 
 <div class="button">
-  <div *ngIf="!showOpens; else elseBlock" >
-    <button (click)="ToggleStatus('Open')" >Show Open Tickets</button>
-    <br/><br>
+  <div *ngIf="!showOpens; else elseBlock">
+    <button (click)="ToggleStatus('Open')">Show Open Tickets</button>
+    <br /><br />
     <h1>All Tickets</h1>
   </div>
   <ng-template #elseBlock>
     <button (click)="ToggleStatus('Open')">Show All Tickets</button>
-    <br/><br>
+    <br /><br />
     <h1>Open Tickets</h1>
   </ng-template>
 </div>
 
-
-
-
 <!--Display list of tickets-->
 <div *ngIf="!showOpens">
-  <div  *ngFor="let t of tickets" class="ticketList">
-    <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
+  <div *ngFor="let t of tickets" class="ticketList">
+    <div class="card">
+      <div
+        class="card-header d-flex flex-row justify-content-between"
+        style="color: #413931; background-color: #cddecd"
+      >
+        <span>{{ t.title }}</span>
+        <span class="text-right">Status: {{ t.status }}</span>
+      </div>
+      <div class="card-body" style="background-color: #ffffff">
+        <a
+          routerLink="/TicketDetails/{{ t.ticketId }}"
+          class="btn col-3"
+          style="color: #413931; background-color: #c5d5ac"
+          >Details</a
+        >
+      </div>
+    </div>
   </div>
 </div>
 <div *ngIf="showOpens">
-  <div  *ngFor="let t of byStatus" class="ticketList">
-    <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
+  <div *ngFor="let t of byStatus" class="ticketList">
+    <div class="card">
+      <div
+        class="card-header d-flex flex-row justify-content-between"
+        style="color: #413931; background-color: #cddecd"
+      >
+        <span>{{ t.title }}</span>
+        <span class="text-right">Status: {{ t.status }}</span>
+      </div>
+      <div class="card-body" style="background-color: #ffffff">
+        <a
+          routerLink="/TicketDetails/{{ t.ticketId }}"
+          class="btn col-3"
+          style="color: #413931; background-color: #c5d5ac"
+          >Details</a
+        >
+      </div>
+    </div>
   </div>
 </div>
-
