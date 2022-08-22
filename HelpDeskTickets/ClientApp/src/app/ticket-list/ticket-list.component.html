@@ -5,29 +5,22 @@
   <app-add-ticket *ngIf="showForm" (created)="NewTicket($event)" (created)="ToggleDisplay()"> </app-add-ticket>
 </div>
 
-<!-- <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    View By Status
-  </button>
-
-  <ul class="dropdown-menu">
-    <li><button class="dropdown-item" (click)="ToggleStatus("Open")>Open</button></li>
-    <li><a class="dropdown-item" (click)="ToggleStatus("Accepted")>Accepted</button></li>
-    <li><a class="dropdown-item" (click)="ToggleStatus("Resolved")>Resolved</a></li>
-  </ul>
-</div> -->
-
-<!-- <select id="CountryList">
-  <option value="Open">Open</option>
-  <option value="Accepted">Accepted</option>
-  <option value="Resolved">Resolved</option>
-</select>
-<button (click)="ToggleStatus(value)">View By Status</button> -->
+<br/>
 
 <div class="button">
-  <button (click)="ToggleStatus('Open')" *ngIf="!showOpens; else elseBlock">Show Open Tickets</button>
-<ng-template #elseBlock><button (click)="ToggleStatus('Open')">Show All Tickets</button></ng-template>
+  <div *ngIf="!showOpens; else elseBlock" >
+    <button (click)="ToggleStatus('Open')" >Show Open Tickets</button>
+    <br/><br>
+    <h1>All Tickets</h1>
+  </div>
+  <ng-template #elseBlock>
+    <button (click)="ToggleStatus('Open')">Show All Tickets</button>
+    <br/><br>
+    <h1>Open Tickets</h1>
+  </ng-template>
 </div>
+
+
 
 
 <!--Display list of tickets-->
