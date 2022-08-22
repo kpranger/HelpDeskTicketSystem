@@ -1,7 +1,8 @@
 <div class="tixDetails">
   <h1>{{ ticket.title }}</h1>
-  <h2>{{ ticket.status }}, Submitted {{ ticket.submittedDate }}</h2>
-  <h2>{{ ticket.category }}</h2>
+  <h2>Category: {{ ticket.category }}</h2>
+  <h4>{{ ticket.status }}, Submitted {{ ticket.submittedDate }}</h4>
+
   <p>Submitted By User {{ ticket.submittedUserId }}</p>
   <p>{{ ticket.details }}</p>
   <br />

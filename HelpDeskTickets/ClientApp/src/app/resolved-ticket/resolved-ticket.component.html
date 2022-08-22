@@ -1,4 +1,32 @@
 <div class="updateTicket">
+  <form
+    #updateTicket="ngForm"
+    (ngSubmit)="UpdateTicket(updateTicket)"
+    class="row"
+  >
+    <input type="number" name="resolvedUserId" placeholder="Your ID" ngModel />
+
+    <input
+      type="text"
+      name="resolutionDetails"
+      placeholder="Resolution Details"
+      ngModel
+    />
+    <input
+      type="text"
+      name="statusUpdate"
+      placeholder="Update Status"
+      ngModel
+    />
+
+    <button>Resolve Issue</button>
+  </form>
+</div>
+
+<!--
+    OG CODE 
+    
+    <div class="updateTicket">
     <form #updateTicket="ngForm" (ngSubmit)="UpdateTicket(updateTicket)" class="row">
         <input type="number" name="resolvedUserId" placeholder="Your ID" ngModel />
         
@@ -6,4 +34,4 @@
   
       <button>Resolve Issue</button>
     </form>
-  </div>
+  </div> -->
