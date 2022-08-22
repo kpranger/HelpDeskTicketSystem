@@ -1,15 +1,9 @@
-<<<<<<< HEAD
 div.TicketOptions{
-    align-items: center;
-=======
-.newTicket{
-    text-align: center;
-}
+    align-items: center;}
 input{
     background-color: #413931;
     color: #cddecd;
 }
 ::placeholder{
     color: #cddecd;
->>>>>>> 303e898fcb88e2072301e42c52590b90cd139d1b
 }
