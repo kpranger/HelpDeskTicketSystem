@@ -21,14 +21,6 @@
 </div>
 
 
-
-
-<<<<<<< HEAD
-<div *ngFor="let t of tickets">
-  <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }} </a>
-  <p>Status: {{ t.status }}</p>
-</div>
-
 <!-- not workin -->
 <!-- <div class="dropdown">
   <button
@@ -49,17 +41,17 @@
 <div *ngFor="let t of tickets">
   <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
 </div> -->
-=======
 <!--Display list of tickets-->
 <div *ngIf="!showOpens">
   <div  *ngFor="let t of tickets" class="ticketList">
     <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
+    <p>Status: {{ t.status }}</p>
   </div>
 </div>
 <div *ngIf="showOpens">
   <div  *ngFor="let t of byStatus" class="ticketList">
     <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
+    <p>Status: {{ t.status }}</p>
   </div>
 </div>
 
->>>>>>> 303e898fcb88e2072301e42c52590b90cd139d1b

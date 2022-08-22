@@ -1,5 +1,6 @@
-div.TicketOptions{
-    align-items: center;}
+.TicketOptions{
+    align-items: center;
+}
 input{
     background-color: #413931;
     color: #cddecd;
