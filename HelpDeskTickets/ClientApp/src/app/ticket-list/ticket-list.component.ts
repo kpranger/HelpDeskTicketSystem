@@ -14,6 +14,8 @@ export class TicketListComponent implements OnInit {
 
   newTicket:Ticket = {} as Ticket;
   showForm:boolean = false;
+  showOpens:boolean = false;
+  byStatus:Ticket[] = [];
 
   tickets:Ticket[] = [];
   ngOnInit(): void {
@@ -31,6 +33,12 @@ export class TicketListComponent implements OnInit {
 
   ToggleDisplay(){
     this.showForm= !this.showForm;
+  }
+
+  ToggleStatus(status:string){
+    this.showOpens = !this.showOpens;
+    this.ticketService.getByStatus(status).subscribe((response:Ticket[]) =>this.byStatus=response)
+    console.log(this.byStatus)
   }
 
 }

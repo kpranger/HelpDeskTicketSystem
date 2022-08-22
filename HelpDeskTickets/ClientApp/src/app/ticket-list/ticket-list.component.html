@@ -1,14 +1,44 @@
 <div class="button">
   <button *ngIf="!showForm" (click)="ToggleDisplay()">Add Ticket</button>
 </div>
-  <div class="newTicketForm">
-    <app-add-ticket *ngIf="showForm" (created)="NewTicket($event)" > </app-add-ticket>
-  </div>
-  <!-- the $event receives the output from the addTicket-->
+<div class="newTicketForm">
+  <app-add-ticket *ngIf="showForm" (created)="NewTicket($event)" (created)="ToggleDisplay()"> </app-add-ticket>
+</div>
 
+<!-- <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    View By Status
+  </button>
+
+  <ul class="dropdown-menu">
+    <li><button class="dropdown-item" (click)="ToggleStatus("Open")>Open</button></li>
+    <li><a class="dropdown-item" (click)="ToggleStatus("Accepted")>Accepted</button></li>
+    <li><a class="dropdown-item" (click)="ToggleStatus("Resolved")>Resolved</a></li>
+  </ul>
+</div> -->
+
+<!-- <select id="CountryList">
+  <option value="Open">Open</option>
+  <option value="Accepted">Accepted</option>
+  <option value="Resolved">Resolved</option>
+</select>
+<button (click)="ToggleStatus(value)">View By Status</button> -->
+
+<div class="button">
+  <button (click)="ToggleStatus('Open')" *ngIf="!showOpens; else elseBlock">Show Open Tickets</button>
+<ng-template #elseBlock><button (click)="ToggleStatus('Open')">Show All Tickets</button></ng-template>
+</div>
 
 
 <!--Display list of tickets-->
-<div *ngFor="let t of tickets" class="ticketList">
-  <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
+<div *ngIf="!showOpens">
+  <div  *ngFor="let t of tickets" class="ticketList">
+    <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
+  </div>
 </div>
+<div *ngIf="showOpens">
+  <div  *ngFor="let t of byStatus" class="ticketList">
+    <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
+  </div>
+</div>
+
