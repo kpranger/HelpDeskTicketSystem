@@ -1,35 +1,56 @@
-<div class="tixDetails">
-  <h1>{{ ticket.title }}</h1>
-  <h2>Category: {{ ticket.category }}</h2>
-  <h4>{{ ticket.status }}, Submitted {{ ticket.submittedDate }}</h4>
+<div class="jumbotron">
+  <div class="tixDetails">
+    <div
+      class="header d-flex flex-row justify-content-between"
+      style="background-color: #cddecd"
+    >
+      <h2>{{ ticket.title }}</h2>
+      <h2>Status: {{ ticket.status }}</h2>
+    </div>
+    <div class="header d-flex flex-row justify-content-between">
+      <h5>Category: {{ ticket.category }}</h5>
+      <h5>Submitted: {{ ticket.submittedDate }}</h5>
+      <h5 style="text-align: right">
+        Submitted By User {{ ticket.submittedUserId }}
+      </h5>
+    </div>
+    <div style="border: 1px solid #413931">
+      <br />
+      <p>{{ ticket.details }}</p>
+    </div>
+    <br />
 
-  <p>Submitted By User {{ ticket.submittedUserId }}</p>
-  <p>{{ ticket.details }}</p>
+    <div
+      *ngIf="ticket.resolvedUserId != null"
+      style="border: 1px solid #413931"
+    >
+      <p>Resolution Details:</p>
+      <p>{{ ticket.resolutionDetails }}</p>
+      Resolved By User {{ ticket.resolvedUserId }}: {{ ticket.resolvedDate }}
+      <br />
+    </div>
+    <br />
+    <p *ngIf="ticket.favoritedUserId != null">
+      Favorited By User {{ ticket.favoritedUserId }} <br />
+    </p>
+  </div>
+
+  <div>
+    <button (click)="toggleFavorites()">Favorite This Ticket</button>
+    <app-favorite-ticket
+      [ticket]="ticket"
+      *ngIf="showFavorites"
+    ></app-favorite-ticket>
+  </div>
   <br />
-  <p *ngIf="ticket.favoritedUserId != null">
-    Favorited By User {{ ticket.favoritedUserId }}
-  </p>
+  <div>
+    <button (click)="toggleResolve()">Resolve This Ticket</button>
+    <app-resolved-ticket *ngIf="showResolve"></app-resolved-ticket>
+  </div>
   <br />
-  <p *ngIf="ticket.resolvedUserId != null">
-    Resolved By User {{ ticket.resolvedUserId }} on {{ ticket.resolvedDate }}
-  </p>
-  <br />
-  <p>{{ ticket.resolutionDetails }}</p>
 </div>
 
-<div>
-  <button (click)="toggleFavorites()">Favorite This Ticket</button>
-  <app-favorite-ticket
-    [ticket]="ticket"
-    *ngIf="showFavorites"
-  ></app-favorite-ticket>
-</div>
-<br />
-<div>
-  <button (click)="toggleResolve()">Resolve This Ticket</button>
-  <app-resolved-ticket *ngIf="showResolve"></app-resolved-ticket>
-</div>
-<br />
+<!-- {{ variable | date: "short" }} -->
 <!-- <div>
   <button (click)="removeTicket(id)">Delete This Ticket</button>
 </div> -->

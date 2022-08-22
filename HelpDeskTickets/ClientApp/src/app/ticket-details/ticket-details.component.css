@@ -1,4 +1,12 @@
 .tixDetails{
     color:#413931;
-    
+    background-color: #ffffff;
+    border: 1px solid #413931;
+    margin: auto;
+    padding: 7px;
+}
+
+.jumbotron{
+    /* margin: auto;
+    padding: 10; */
 }
