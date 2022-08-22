@@ -1,7 +1,28 @@
 <app-add-ticket (created)="NewTicket($event)"> </app-add-ticket>
 <!-- the $event receives the output from the addTicket-->
 
-<!--Display list of tickets-->
+<div *ngFor="let t of tickets">
+  <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }} </a>
+  <p>Status: {{ t.status }}</p>
+</div>
+
+<!-- not workin -->
+<!-- <div class="dropdown">
+  <button
+    type="button"
+    class="btn btn-info dropdown-toggle"
+    data-bs-toggle="dropdown"
+  >
+    Show Tickets
+  </button>
+  <div class="dropdown-item">
+    <p *ngFor="let t of tickets">
+      <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
+    </p>
+  </div>
+</div> -->
+
+<!-- OG CODE 
 <div *ngFor="let t of tickets">
   <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
-</div>
+</div> -->

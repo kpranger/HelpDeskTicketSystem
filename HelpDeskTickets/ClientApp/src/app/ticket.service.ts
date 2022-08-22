@@ -27,8 +27,11 @@ export class TicketService {
   }
 
 
-  updateTicket(id:number, resolvedUserId: number, resolutionDetails: string):any{
-    return this.http.patch(`${this.baseUrl}${this.controllerEndpoint}/UpdateTicket/${id}?resolvedUserId=${resolvedUserId}&resolutionDetails=${resolutionDetails}`, {});
+  // updateTicket(id:number, resolvedUserId: number, resolutionDetails: string):any{
+  //   return this.http.patch(`${this.baseUrl}${this.controllerEndpoint}/UpdateTicket/${id}?resolvedUserId=${resolvedUserId}&resolutionDetails=${resolutionDetails}`, {});
+  // }
+  updateTicket(id:number, resolvedUserId: number, resolutionDetails: string, status:string):any{
+    return this.http.patch(`${this.baseUrl}${this.controllerEndpoint}/UpdateTicket/${id}?resolvedUserId=${resolvedUserId}&resolutionDetails=${resolutionDetails}&status=${status}`, {});
   }
 
   // addTicket(title:string, details: string, status: string, submittedUserId: number, submittedDate: Date, favoritedUserId: number, resolvedUserId: number, resolutionDetails:string, resolvedDate:Date):any{

@@ -44,6 +44,7 @@ namespace HelpDeskTickets.Controllers
             updatedTicket.FavoritedUserId = favoritedUserId;
             updatedTicket.ResolvedUserId = resolvedUserId;
             updatedTicket.ResolutionDetails = resolutionDetails;
+            
             updatedTicket.ResolvedDate = DateTime.Now;
             context.SaveChanges();
 
