@@ -9,7 +9,7 @@
     </div>
     <div class="header d-flex flex-row justify-content-between">
       <h5>Category: {{ ticket.category }}</h5>
-      <h5>Submitted: {{ ticket.submittedDate }}</h5>
+      <h5>Submitted: {{ ticket.submittedDate | date: "MM/dd/YYYY" }}</h5>
       <h5 style="text-align: right">
         Submitted By User {{ ticket.submittedUserId }}
       </h5>
@@ -26,7 +26,8 @@
     >
       <p>Resolution Details:</p>
       <p>{{ ticket.resolutionDetails }}</p>
-      User {{ ticket.resolvedUserId }} Responded: {{ ticket.resolvedDate }}
+      User {{ ticket.resolvedUserId }} Responded:
+      {{ ticket.resolvedDate | date: "MM/dd/YYYY" }}
       <br />
     </div>
     <br />
@@ -34,7 +35,7 @@
       Favorited By User {{ ticket.favoritedUserId }} <br />
     </p>
   </div>
-
+  <br />
   <div>
     <button (click)="toggleFavorites()">Favorite This Ticket</button>
     <app-favorite-ticket

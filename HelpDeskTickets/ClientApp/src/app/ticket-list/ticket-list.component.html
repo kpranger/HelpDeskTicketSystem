@@ -1,5 +1,7 @@
 <div class="button">
   <button *ngIf="!showForm" (click)="ToggleDisplay()">Add Ticket</button>
+  <br />
+  <br />
 </div>
 <div class="newTicketForm">
   <app-add-ticket
@@ -8,10 +10,13 @@
     (created)="ToggleDisplay()"
   >
   </app-add-ticket>
+  <div *ngIf="showForm" class="button">
+    <br />
+    <button (click)="ToggleDisplay()">Don't Add Ticket</button>
+    <br />
+    <br />
+  </div>
 </div>
-
-<br />
-
 <div class="button">
   <div *ngIf="!showOpens; else elseBlock">
     <button (click)="ToggleStatus('Open')">Show Open Tickets</button>

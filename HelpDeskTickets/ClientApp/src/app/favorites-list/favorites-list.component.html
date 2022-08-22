@@ -4,18 +4,57 @@
   <button>Get My Favorites</button>
 </form>
 
-<div *ngFor="let t of favTickets">
-  <h1>{{ t.title }}</h1>
-  <h2>{{ t.status }}, Submitted {{ t.submittedDate }}</h2>
-  <h2>{{ t.category }}</h2>
-  <p>Submitted By User {{ t.submittedUserId }}</p>
-  <p>{{ t.details }}</p>
-  <br />
-  <p *ngIf="t.favoritedUserId != null">You favorited this ticket!</p>
-  <br />
-  <p *ngIf="t.resolvedUserId != null">
-    Resolved By User {{ t.resolvedUserId }} on {{ t.resolvedDate }}
-  </p>
-  <br />
-  <button (click)="removeFromFavorites(t)">Remove From Favorites</button>
+<div>
+  <div
+    *ngFor="let ticket of favTickets"
+    class="jumbotron"
+    style="
+      background-color: #ffffff;
+      color: #413931;
+      border: 1px solid #413931;
+      padding: 7px;
+      margin-top: 25px;
+    "
+  >
+    <div class="jumbotron">
+      <div class="tixDetails">
+        <div
+          class="header d-flex flex-row justify-content-between"
+          style="background-color: #cddecd"
+        >
+          <h2>{{ ticket.title }}</h2>
+          <h2>Status: {{ ticket.status }}</h2>
+        </div>
+        <div class="header d-flex flex-row justify-content-between">
+          <h5>Category: {{ ticket.category }}</h5>
+          <h5>Submitted: {{ ticket.submittedDate | date: "MM/dd/YYYY" }}</h5>
+          <h5 style="text-align: right">
+            Submitted By User {{ ticket.submittedUserId }}
+          </h5>
+        </div>
+        <div style="border: 1px solid #413931">
+          <br />
+          <p>{{ ticket.details }}</p>
+        </div>
+        <br />
+        <div
+          *ngIf="ticket.resolvedUserId != null"
+          style="border: 1px solid #413931"
+        >
+          <p>Resolution Details:</p>
+          <p>{{ ticket.resolutionDetails }}</p>
+          User {{ ticket.resolvedUserId }} Responded:
+          {{ ticket.resolvedDate | date: "MM/dd/YYYY" }}
+          <br />
+        </div>
+        <br />
+        <p *ngIf="ticket.favoritedUserId != null">
+          Favorited By User {{ ticket.favoritedUserId }} <br />
+        </p>
+      </div>
+      <button (click)="removeFromFavorites(ticket)">
+        Remove From Favorites
+      </button>
+    </div>
+  </div>
 </div>

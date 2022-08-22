@@ -2,11 +2,10 @@
     margin-left:10%;
     margin-right:10%;
 }
-.ticketList{
-    /* text-align: center; */
-
-}
 .button{
     text-align: center;
     color: #413931;
+}
+#detailsButton:hover{
+    background-color:#9c9483;
 }
