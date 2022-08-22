@@ -1,6 +1,29 @@
-<app-add-ticket (created)="NewTicket($event)"> </app-add-ticket>
-<!-- the $event receives the output from the addTicket-->
+<div class="button">
+  <button *ngIf="!showForm" (click)="ToggleDisplay()">Add Ticket</button>
+</div>
+<div class="newTicketForm">
+  <app-add-ticket *ngIf="showForm" (created)="NewTicket($event)" (created)="ToggleDisplay()"> </app-add-ticket>
+</div>
 
+<br/>
+
+<div class="button">
+  <div *ngIf="!showOpens; else elseBlock" >
+    <button (click)="ToggleStatus('Open')" >Show Open Tickets</button>
+    <br/><br>
+    <h1>All Tickets</h1>
+  </div>
+  <ng-template #elseBlock>
+    <button (click)="ToggleStatus('Open')">Show All Tickets</button>
+    <br/><br>
+    <h1>Open Tickets</h1>
+  </ng-template>
+</div>
+
+
+
+
+<<<<<<< HEAD
 <div *ngFor="let t of tickets">
   <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }} </a>
   <p>Status: {{ t.status }}</p>
@@ -26,3 +49,17 @@
 <div *ngFor="let t of tickets">
   <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
 </div> -->
+=======
+<!--Display list of tickets-->
+<div *ngIf="!showOpens">
+  <div  *ngFor="let t of tickets" class="ticketList">
+    <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
+  </div>
+</div>
+<div *ngIf="showOpens">
+  <div  *ngFor="let t of byStatus" class="ticketList">
+    <a routerLink="/TicketDetails/{{ t.ticketId }}">{{ t.title }}</a>
+  </div>
+</div>
+
+>>>>>>> 303e898fcb88e2072301e42c52590b90cd139d1b

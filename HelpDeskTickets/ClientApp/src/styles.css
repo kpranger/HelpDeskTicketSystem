@@ -1,16 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+body{
+  background-color:#d4cbb6;
+  font-family: 'Roboto', sans-serif;
+}
+button{
+  color:#413931;
+  background-color: #c5d5ac;
+  border-color: #413931 ;
+
+}
+a{
+  color:#413931;
+}
+a:hover{
+  color: #6a6a52;
 }
 
-code {
-  color: #e01a76;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}

@@ -42,7 +42,7 @@ export class TicketService {
   // }
 
   addTicket(newTicket:Ticket):any{
-    return this.http.post(`${this.baseUrl}${this.controllerEndpoint}/AddTicket/?title=${newTicket.title}&details=${newTicket.details}&status=${newTicket.status}&submittedUserId=${newTicket.submittedUserId}&category=${newTicket.category}`, {});
+    return this.http.post(`${this.baseUrl}${this.controllerEndpoint}/AddTicket?title=${newTicket.title}&details=${newTicket.details}&submittedUserId=${newTicket.submittedUserId}&category=${newTicket.category}`, {});
   }
 
 

@@ -2,10 +2,16 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  color:#413931;
+  
+}
+a.nav-link.text-dark{
+  color:#413931;
 }
 
 html {
   font-size: 14px;
+  background-color: #cddecd;
 }
 @media (min-width: 768px) {
   html {
@@ -15,4 +21,10 @@ html {
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+nav{
+  background-color: #cddecd;
+}
+header{
+  color:#413931;
 }

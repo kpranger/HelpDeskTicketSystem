@@ -52,13 +52,13 @@ namespace HelpDeskTickets.Controllers
         }
 
         [HttpPost("AddTicket")]
-        public Ticket addTicket(string title, string details, string status, int submittedUserId, 
+        public Ticket addTicket(string title, string details, int submittedUserId, 
             string category)
         {
             Ticket newTicket = new Ticket();
             newTicket.Title = title;
             newTicket.Details = details;
-            newTicket.Status = status;
+            newTicket.Status = "Open";
             newTicket.SubmittedUserId = submittedUserId;
             newTicket.SubmittedDate = DateTime.Now;
             //newTicket.FavoritedUserId = favoritedUserId;
@@ -100,6 +100,21 @@ namespace HelpDeskTickets.Controllers
         public List<User> GetAllUsers()
         {
             return context.Users.ToList();
+        }
+
+        [HttpGet("CheckUserExists")]
+        public bool CheckUserExists(string firstName, string lastName)
+        {
+            List<User> allUsers = context.Users.ToList();
+            User check = allUsers.FirstOrDefault(n => n.FirstName == firstName && n.LastName == lastName);
+            if(check == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
