@@ -15,12 +15,15 @@ namespace HelpDeskTickets.Controllers
         public Favorite addToFavorites(int id, string firstName, string lastName)
         {
             User user = context.Users.FirstOrDefault(u => u.FirstName == firstName && u.LastName == lastName);
-            //if (user == null)
-            //{
-            //    newUser.FirstName = firstName;
-            //    newUser.LastName = lastName;
-            //    context.Users.Add(newUser);
-            //}
+            if (user == null)
+            {
+                user = new User();
+                user.FirstName = firstName;
+                user.LastName = lastName;
+                context.Users.Add(user);
+                context.SaveChanges();
+                user = context.Users.First(u => u.FirstName == firstName && u.LastName == lastName);
+            }
             Ticket favTicket = context.Tickets.FirstOrDefault(t => t.TicketId == id);
             Favorite favorite = new Favorite();
             favorite.TicketId = favTicket.TicketId;
@@ -35,15 +38,25 @@ namespace HelpDeskTickets.Controllers
         [HttpGet("GetAllFavorites")]
         public List<Ticket> getAllFavorites(string firstName, string lastName)
         {
-            int UserID = context.Users.FirstOrDefault(u => u.FirstName == firstName && u.LastName == lastName).UserId;
+            User user = context.Users.FirstOrDefault(u => u.FirstName == firstName && u.LastName == lastName);
+            if (user == null)
+            {
+                user = new User();
+                user.FirstName = firstName;
+                user.LastName = lastName;
+                context.Users.Add(user);
+                context.SaveChanges();
+                user = context.Users.First(u => u.FirstName == firstName && u.LastName == lastName);
+            }
+            int UserID = user.UserId;
             List<Ticket> favoritesList = context.Favorites.Where(u => u.UserId == UserID).Include(f => f.Ticket).Select(f => f.Ticket).ToList();
             return favoritesList;
         }
 
-        [HttpDelete("RemoveFromFavorites/{id}")] 
+        [HttpDelete("RemoveFromFavorites/{id}")]
         public int removeFromFavorites(int id, string firstName, string lastName)
         {
-            int UserID = context.Users.FirstOrDefault(u=>u.FirstName == firstName && u.LastName == lastName).UserId;
+            int UserID = context.Users.FirstOrDefault(u => u.FirstName == firstName && u.LastName == lastName).UserId;
             Favorite favorite = context.Favorites.Where(u => u.UserId == UserID && u.TicketId == id).FirstOrDefault();
             context.Favorites.Remove(favorite);
             context.SaveChanges();
